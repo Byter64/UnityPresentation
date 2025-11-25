@@ -50,6 +50,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c6f60b9b-9ca4-406a-af0c-fc00ecde3196",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Backward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4246ebc0-cef4-4a5f-bbb4-21f5eecc77ab",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
@@ -63,6 +74,17 @@
                     "name": "",
                     "id": "e1e4a0b3-74df-4cdb-8bbf-e58600b31e51",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c94214ef-de7a-48d1-870b-5fd3775be127",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

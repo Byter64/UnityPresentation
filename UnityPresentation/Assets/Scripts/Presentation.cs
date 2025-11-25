@@ -54,11 +54,29 @@ namespace Presentation
 			UpdatePresentation();
 		}
 
+		private void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.LeftArrow))
+			{
+				GoToPreviousSlide();
+			}
+
+			if (Input.GetKeyDown(KeyCode.RightArrow))
+			{
+				GoToNextSlide();
+			}
+		}
+
 		public void GoToNextSlide(InputAction.CallbackContext context)
 		{
 			if (!context.performed) return;
-			if (activeSlideIndex + 1 >= transform.childCount) return;
 
+			GoToNextSlide();
+		}
+
+		public void GoToNextSlide()
+		{
+			if (activeSlideIndex + 1 >= transform.childCount) return;
 			activeSlideIndex++;
 			UpdatePresentation();
 		}
@@ -66,8 +84,13 @@ namespace Presentation
 		public void GoToPreviousSlide(InputAction.CallbackContext context)
 		{
 			if (!context.performed) return;
-			if (activeSlideIndex <= 0) return;
 
+			GoToPreviousSlide();
+		}
+
+		public void GoToPreviousSlide()
+		{
+			if (activeSlideIndex <= 0) return;
 			activeSlideIndex--;
 			UpdatePresentation();
 		}

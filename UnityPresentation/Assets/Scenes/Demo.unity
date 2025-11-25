@@ -296,33 +296,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 421951353840629891, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1568117334}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5066152677982945894, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 59744595}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
 --- !u!4 &59744593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
   m_PrefabInstance: {fileID: 59744592}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &59744594 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5066152677982945894, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
-  m_PrefabInstance: {fileID: 59744592}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &59744595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59744594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 831fb05d76e84c742b026402a290f028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Slide
 --- !u!224 &59744596 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 421951353840629891, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
@@ -2828,6 +2808,9 @@ PrefabInstance:
       addedObject: {fileID: 1058890634}
     - targetCorrespondingSourceObject: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 981516115}
+    - targetCorrespondingSourceObject: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 439946613}
     - targetCorrespondingSourceObject: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       insertIndex: -1
@@ -4759,6 +4742,119 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &981516114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981516115}
+  - component: {fileID: 981516117}
+  - component: {fileID: 981516116}
+  m_Layer: 0
+  m_Name: Blipper_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981516115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981516114}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.67, y: 3.83, z: -1.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172658358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &981516116
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981516114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ac0a6927a4f0a7438c4193ef3d82807, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!212 &981516117
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981516114}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2092337744, guid: cdb0ddfcc29a37e47ad28550e2c28d24, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &983935154
 GameObject:
   m_ObjectHideFlags: 0
@@ -8682,6 +8778,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: aaf202aa-2d5b-44e6-a141-3ffb77ab3cb4
     m_ActionName: 'Player/Pause[/SwitchProControllerHID/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac182acc-04e8-4bd4-990b-8bbeb70c7513
+    m_ActionName: 'Player2/Jump[/SwitchProControllerHID/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 33dafc7d-db5a-4c91-b16c-18ff225d59ef
+    m_ActionName: 'Player2/Action2[/SwitchProControllerHID/buttonWest,/SwitchProControllerHID/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d368593c-f430-42f5-810e-167a0b1c78e4
+    m_ActionName: 'Player2/Pause[/SwitchProControllerHID/start]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 73781b06-1229-4246-b912-c988850255df
+    m_ActionName: 'Player2/Up[/SwitchProControllerHID/dpad/up,/SwitchProControllerHID/leftStick/up]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9efe241f-033a-4126-a08e-1d7e71f7f201
+    m_ActionName: 'Player2/Down[/SwitchProControllerHID/dpad/down,/SwitchProControllerHID/leftStick/down]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 998282a5-f36c-4525-94fd-66d847da4ec1
+    m_ActionName: 'Player2/Left[/SwitchProControllerHID/dpad/left,/SwitchProControllerHID/leftStick/left]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9675316b-1586-4487-81a8-c1f15d5a2fed
+    m_ActionName: 'Player2/Right[/SwitchProControllerHID/dpad/right,/SwitchProControllerHID/leftStick/right]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9cd3ae6d-2247-42a8-8d0e-2bf797174ba2
+    m_ActionName: 'Player2/ForwardJump[/SwitchProControllerHID/buttonNorth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
@@ -9408,12 +9536,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left
+      value: 
+      objectReference: {fileID: 6770882361522253285, guid: e1cda574f31c70043a4609b1c690e952, type: 3}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right
+      value: 
+      objectReference: {fileID: -3743069948469825945, guid: e1cda574f31c70043a4609b1c690e952, type: 3}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: setSlideTo
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_Name
+      value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_Name
+      value: Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: startFromBeginning
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: viewSlideWithIndex
@@ -9423,6 +9575,46 @@ PrefabInstance:
       propertyPath: defaultCameraTransform
       value: 
       objectReference: {fileID: 330585546}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 2468102a-46ff-487a-8a7f-d7c0852a2cd1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 20d6d651-759a-446a-962b-5451cbf5c1a3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/leftArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/rightArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: left.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: right.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 3568536431194036880, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: m_Name
       value: Presentation
@@ -9465,6 +9657,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5102804391195937202, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116763159477928136, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8332054875430811988, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
