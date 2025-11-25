@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Presentation
   defaultCameraTransform: {fileID: 0}
-  viewSlideWithIndex: 2
+  viewSlideWithIndex: 8
   startFromBeginning: 0
 --- !u!114 &7116763159477928136
 MonoBehaviour:
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: e1cda574f31c70043a4609b1c690e952, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -197,8 +197,8 @@ MonoBehaviour:
     m_ActionId: 35efb35a-a797-478e-abae-731278e09f62
     m_ActionName: 'Presentation/Backward[/Keyboard/a,/Keyboard/leftArrow]'
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Presentation
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1001 &112446410972913592
