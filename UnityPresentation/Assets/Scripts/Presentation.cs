@@ -31,6 +31,7 @@ public class Presentation : MonoBehaviour
 		Camera.main.transform.rotation = defaultCameraTransform.rotation;
 		Camera.main.transform.localScale = defaultCameraTransform.localScale;
 
+		activeSlide = transform.GetChild(0).gameObject;
 		UpdatePresentation();
 	}
 
