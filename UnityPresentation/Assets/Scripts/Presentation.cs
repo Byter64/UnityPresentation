@@ -74,9 +74,17 @@ namespace Presentation
 
 		private void UpdatePresentation()
 		{
+			Survivor[] survivors = activeSlide.GetComponentsInChildren<Survivor>();
+			GameObject newActiveSlide = transform.GetChild(activeSlideIndex).gameObject;
+			foreach (Survivor survivor in survivors)
+			{
+				if(survivor.startSlide <= activeSlideIndex && survivor.lastSlide >= activeSlideIndex)
+					survivor.transform.SetParent(newActiveSlide.transform, false);
+			}
+
 			activeSlide.SetActive(false);
 			transform.position = -transform.GetChild(activeSlideIndex).localPosition;
-			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
+			activeSlide = newActiveSlide;
 			activeSlide.SetActive(true);
 		}
 

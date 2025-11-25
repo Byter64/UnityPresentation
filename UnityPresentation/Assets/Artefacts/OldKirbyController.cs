@@ -14,6 +14,7 @@ public class OldKirbyController : MonoBehaviour
 	[SerializeField] private float jumpTime;
 	[SerializeField] private float minFlightTime;
 	[SerializeField] private AnimationCurve jumpCurve;
+	[SerializeField] private Vector2 xBounds;
 
 	private float horInput;
 	private bool duckInput;
@@ -63,8 +64,13 @@ public class OldKirbyController : MonoBehaviour
 			transform.position = pos;
 		}
 
-		if(!isCrouching && !isSucking)
-			transform.position += new Vector3(horSpeed, 0, 0) * Time.fixedDeltaTime;
+		if (!isCrouching && !isSucking)
+		{
+			Vector3 pos = transform.localPosition;
+			pos.x += horSpeed * Time.fixedDeltaTime;
+			pos.x = Mathf.Clamp(pos.x, xBounds.x, xBounds.y);
+			transform.localPosition = pos;
+		}
 
 		if(horInput != 0)
 		{
