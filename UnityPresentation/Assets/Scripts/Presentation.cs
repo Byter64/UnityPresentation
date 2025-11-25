@@ -11,6 +11,7 @@ public class Presentation : MonoBehaviour
 	private GameObject activeSlide;
 
 	[SerializeField, Tooltip("Editor Only Variable"), Min(0)] private int viewSlideWithIndex;
+	[SerializeField, Tooltip("Editor Only Variable")] bool startFromBeginning;
 
 	private void OnValidate()
 	{
@@ -39,7 +40,15 @@ public class Presentation : MonoBehaviour
 		Camera.main.transform.rotation = defaultCameraTransform.rotation;
 		Camera.main.transform.localScale = defaultCameraTransform.localScale;
 
-		activeSlide = transform.GetChild(0).gameObject;
+#if UNITY_EDITOR
+		if(startFromBeginning)
+			activeSlideIndex = 0;
+		else
+			activeSlideIndex = Mathf.Min(viewSlideWithIndex, transform.childCount - 1);
+#else
+		activeSlideIndex = 0;
+#endif
+		activeSlide = transform.GetChild(activeSlideIndex).gameObject;
 		UpdatePresentation();
 	}
 
