@@ -5,6 +5,14 @@ public class Slide : MonoBehaviour
 	private void OnDrawGizmos()
 	{
 		Camera cam = Camera.main;
-		Gizmos.DrawFrustum(transform.position + Presentation.Instance.defaultCameraTransform.position, cam.fieldOfView, cam.farClipPlane, cam.nearClipPlane, cam.aspect);
+		Vector3 size, position;
+		size.y = cam.orthographicSize * 2;
+		size.x = size.y * cam.aspect;
+		size.z = cam.farClipPlane - cam.nearClipPlane;
+
+		position = transform.position + Presentation.Instance.defaultCameraTransform.position;
+		position.z += size.z * 0.5f;
+
+		Gizmos.DrawWireCube(position, size);
 	}
 }

@@ -10,9 +10,17 @@ public class Presentation : MonoBehaviour
 	private int activeSlideIndex;
 	private GameObject activeSlide;
 
+	[SerializeField, Tooltip("Editor Only Variable"), Min(0)] private int viewSlideWithIndex;
+
 	private void OnValidate()
 	{
 		Instance = this;
+
+		if(viewSlideWithIndex != activeSlideIndex && viewSlideWithIndex < transform.childCount)
+		{
+			activeSlideIndex = viewSlideWithIndex;
+			UpdatePresentationEditor();
+		}
 	}
 
 	private void Awake()
@@ -59,5 +67,11 @@ public class Presentation : MonoBehaviour
 		transform.position = -transform.GetChild(activeSlideIndex).localPosition;
 		activeSlide = transform.GetChild(activeSlideIndex).gameObject;
 		activeSlide.SetActive(true);
+	}
+
+	private void UpdatePresentationEditor()
+	{
+		transform.position = -transform.GetChild(activeSlideIndex).localPosition;
+		activeSlide = transform.GetChild(activeSlideIndex).gameObject;
 	}
 }
