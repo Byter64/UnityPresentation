@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class OldKirbyController : MonoBehaviour
+public class KirbyController1 : MonoBehaviour
 {
 	[SerializeField] private float walkSpeed;
 	[SerializeField] private float slowWalkSpeed;
@@ -16,12 +17,12 @@ public class OldKirbyController : MonoBehaviour
 	[SerializeField] private AnimationCurve jumpCurve;
 	[SerializeField] private Vector2 xBounds;
 
-	private float horInput;
+	private bool leftInput;
+	private bool rightInput;
 	private bool duckInput;
 	private bool flyInput;
 	private bool actionInput;
 	private bool action2Input;
-
 
 	private float horSpeed;
 	private bool isCrouching;
@@ -30,6 +31,7 @@ public class OldKirbyController : MonoBehaviour
 	private bool isFlying;
 	private bool isGliding;
 	private bool isJumping;
+	private bool isForwardJumping;
 	private bool isGrounded;
 
 	private Animator animator;
@@ -43,6 +45,7 @@ public class OldKirbyController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		float horInput = -Convert.ToInt32(leftInput) + Convert.ToInt32(rightInput);
 		horSpeed = ((isGliding || isFlying) ? slowWalkSpeed : walkSpeed) * horInput;
 		isCrouching = duckInput && isGrounded;
 		isGrounded = transform.position.y == groundHeight;
@@ -64,7 +67,7 @@ public class OldKirbyController : MonoBehaviour
 			transform.position = pos;
 		}
 
-		if (!isCrouching && !isSucking)
+		if (!isCrouching && !isSucking && !isForwardJumping)
 		{
 			Vector3 pos = transform.localPosition;
 			pos.x += horSpeed * Time.fixedDeltaTime;
@@ -89,16 +92,44 @@ public class OldKirbyController : MonoBehaviour
 		animator.SetBool("isGliding", isGliding);
 	}
 
-
-	public void OnMove(InputAction.CallbackContext context)
+	public void OnUp(InputAction.CallbackContext context)
 	{
-		Vector2 input = context.ReadValue<Vector2>();
-		horInput = Mathf.RoundToInt(input.x);
-		duckInput = input.y < 0;
-		flyInput = input.y > 0;
+		if (context.performed)
+			flyInput = !duckInput;
 	}
 
-	public void OnAction(InputAction.CallbackContext context)
+	public void OnDown(InputAction.CallbackContext context)
+	{
+		if (context.performed)
+			duckInput = !duckInput;
+	}
+
+	public void OnLeft(InputAction.CallbackContext context)
+	{
+		if (context.performed)
+		{
+			leftInput = !leftInput;
+			if(leftInput && rightInput)
+			{
+				rightInput = false;
+				leftInput = false;
+			}
+		}
+	}
+	public void OnRight(InputAction.CallbackContext context)
+	{
+		if (context.performed)
+		{
+			rightInput = !rightInput;
+			if (leftInput && rightInput)
+			{
+				rightInput = false;
+				leftInput = false;
+			}
+		}
+	}
+
+	public void OnJump(InputAction.CallbackContext context)
 	{
 		actionInput = context.ReadValueAsButton();
 
@@ -110,6 +141,18 @@ public class OldKirbyController : MonoBehaviour
 		}
 
 	}
+
+	public void OnForwardJump(InputAction.CallbackContext context)
+	{
+		if (context.performed && isGrounded)
+		{
+			if (flying != null) StopCoroutine(flying);
+			flying = StartCoroutine(ForwardJump());
+			leftInput = false;
+			rightInput = false;
+		}
+	}
+
 
 	public void OnAction2(InputAction.CallbackContext context)
 	{
@@ -124,7 +167,7 @@ public class OldKirbyController : MonoBehaviour
 	{
 		isJumping = true;
 		float time = 0;
-		while(actionInput && time < jumpTime)
+		while (time < jumpTime)
 		{
 			yield return new WaitForFixedUpdate();
 			time += Time.fixedDeltaTime;
@@ -136,12 +179,34 @@ public class OldKirbyController : MonoBehaviour
 		isJumping = false;
 	}
 
+	private IEnumerator ForwardJump()
+	{
+		isForwardJumping = true;
+		isJumping = true;
+		float time = 0;
+		while (time < jumpTime)
+		{
+			yield return new WaitForFixedUpdate();
+			time += Time.fixedDeltaTime;
+			Vector3 pos = transform.localPosition;
+			pos.x += walkSpeed * Mathf.Sign(transform.localScale.x) * Time.fixedDeltaTime;
+			pos.x = Mathf.Clamp(pos.x, xBounds.x, xBounds.y);
+			pos.y = groundHeight + jumpCurve.Evaluate(time / jumpTime) * jumpHeight;
+			transform.localPosition = pos;
+		}
+
+		isForwardJumping = false;
+		isJumping = false;
+	}
+
 	private IEnumerator Fly()
 	{
 		isFlying = true;
+		flyInput = false;
 
 		float time = 0;
-		while(time < minFlightTime)
+		float flyingHeight = transform.localPosition.y;
+		while (time < minFlightTime)
 		{
 			yield return new WaitForFixedUpdate();
 			time += Time.fixedDeltaTime;
@@ -150,21 +215,56 @@ public class OldKirbyController : MonoBehaviour
 			transform.position = pos;
 		}
 
-		while(flyInput)
+		float puffDelta = transform.localPosition.y - flyingHeight;
+		flyingHeight = transform.localPosition.y;
+
+
+		while (!action2Input)
 		{
+			time = 0;
 			yield return new WaitForFixedUpdate();
-			Vector3 pos = transform.position;
-			pos.y += flightSpeed * Time.fixedDeltaTime;
-			transform.position = pos;
+			while (time < minFlightTime)
+			{
+				yield return new WaitForFixedUpdate();
+				time += Time.fixedDeltaTime;
+				Vector3 pos = transform.position;
+				pos.y += flightSpeed * Time.fixedDeltaTime;
+				transform.position = pos;
+			}
+
+			if(flyInput)
+			{
+				flyInput = false;
+				flyingHeight = transform.localPosition.y;
+			}
+			if(duckInput)
+			{
+				duckInput = false;
+				flyingHeight -= puffDelta;
+				if(flyingHeight < groundHeight)
+				{
+					action2Input = true;
+				}
+			}
+
+			while (transform.localPosition.y >= flyingHeight)
+			{
+				yield return new WaitForFixedUpdate();
+
+				Vector3 pos = transform.position;
+				pos.y -= slowFallSpeed * Time.fixedDeltaTime;
+				transform.position = pos;
+
+				if (action2Input)
+				{
+					break;
+				}
+			}
 		}
+
+		action2Input = false;
+
 		isFlying = false;
-		isGliding = true;
-
-		while(!action2Input)
-		{
-			yield return new WaitForFixedUpdate();
-		}
-
 		isGliding = false;
 		flying = null;
 	}
