@@ -5,10 +5,14 @@ using UnityEngine.InputSystem;
 public class OldKirbyController : MonoBehaviour
 {
 	[SerializeField] private float walkSpeed;
+	[SerializeField] private float slowWalkSpeed;
 	[SerializeField] private float fallSpeed;
+	[SerializeField] private float slowFallSpeed;
+	[SerializeField] private float flightSpeed;
 	[SerializeField] private float groundHeight;
 	[SerializeField] private float jumpHeight;
 	[SerializeField] private float jumpTime;
+	[SerializeField] private float minFlightTime;
 	[SerializeField] private AnimationCurve jumpCurve;
 
 	private float horInput;
@@ -23,10 +27,13 @@ public class OldKirbyController : MonoBehaviour
 	private bool isSucking;
 	private bool isFull;
 	private bool isFlying;
+	private bool isGliding;
 	private bool isJumping;
 	private bool isGrounded;
 
 	private Animator animator;
+
+	private Coroutine flying;
 
 	private void OnEnable()
 	{
@@ -35,22 +42,28 @@ public class OldKirbyController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		horSpeed = horInput * walkSpeed;
+		horSpeed = (isGliding ? slowWalkSpeed : walkSpeed) * horInput;
 		isCrouching = duckInput && isGrounded;
-		isSucking = action2Input;
-		isFlying = flyInput;
 		isGrounded = transform.position.y == groundHeight;
+
+		if(flyInput && !isSucking && !isFull && !isFlying)
+		{
+			StartCoroutine(Fly());
+		}
 
 		if(!isGrounded && !isJumping && !isFlying)
 		{
 			Vector3 pos = transform.position;
-			pos.y -= fallSpeed * Time.fixedDeltaTime;
-			if(pos.y < groundHeight)
+			if(!isGliding)
+				pos.y -= fallSpeed * Time.fixedDeltaTime;
+			else
+				pos.y -= slowFallSpeed * Time.fixedDeltaTime;
+			if (pos.y < groundHeight)
 				pos.y = groundHeight;
 			transform.position = pos;
 		}
 
-		if(!isCrouching)
+		if(!isCrouching && !isSucking)
 			transform.position += new Vector3(horSpeed, 0, 0) * Time.fixedDeltaTime;
 
 		if(horInput != 0)
@@ -67,6 +80,7 @@ public class OldKirbyController : MonoBehaviour
 		animator.SetBool("isFlying", isFlying);
 		animator.SetBool("isJumping", isJumping);
 		animator.SetBool("isGrounded", isGrounded);
+		animator.SetBool("isGliding", isGliding);
 	}
 
 
@@ -83,13 +97,21 @@ public class OldKirbyController : MonoBehaviour
 		actionInput = context.ReadValueAsButton();
 
 
-		if(context.performed && isGrounded)
-			StartCoroutine(Jump());
+		if (context.performed && isGrounded)
+		{
+			if (flying != null) StopCoroutine(flying);
+			flying = StartCoroutine(Jump());
+		}
+
 	}
 
 	public void OnAction2(InputAction.CallbackContext context)
 	{
 		action2Input = context.ReadValueAsButton();
+		if(context.performed && !isSucking && ! isFlying && ! isGliding)
+		{
+			StartCoroutine(Suck());
+		}
 	}
 
 	private IEnumerator Jump()
@@ -106,5 +128,55 @@ public class OldKirbyController : MonoBehaviour
 		}
 
 		isJumping = false;
+	}
+
+	private IEnumerator Fly()
+	{
+		isFlying = true;
+
+		float time = 0;
+		while(time < minFlightTime)
+		{
+			yield return new WaitForFixedUpdate();
+			time += Time.fixedDeltaTime;
+			Vector3 pos = transform.position;
+			pos.y += flightSpeed * Time.fixedDeltaTime;
+			transform.position = pos;
+		}
+
+		while(flyInput)
+		{
+			yield return new WaitForFixedUpdate();
+			Vector3 pos = transform.position;
+			pos.y += flightSpeed * Time.fixedDeltaTime;
+			transform.position = pos;
+		}
+		isFlying = false;
+		isGliding = true;
+
+		while(!action2Input)
+		{
+			yield return new WaitForFixedUpdate();
+		}
+
+		isGliding = false;
+		flying = null;
+	}
+
+	private IEnumerator Suck()
+	{
+		isSucking = true;
+
+		while(action2Input)
+		{
+			yield return new WaitForFixedUpdate();
+		}
+
+		animator.SetBool("endSucking", true);
+		yield return new WaitForSeconds(0.3f);
+
+		animator.SetBool("endSucking", false);
+		animator.SetBool("isSucking", false);
+		isSucking = false;
 	}
 }

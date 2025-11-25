@@ -3409,10 +3409,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldKirbyController
   walkSpeed: 4
+  slowWalkSpeed: 2
   fallSpeed: 6
+  slowFallSpeed: 2
+  flightSpeed: 4
   groundHeight: -3.8
   jumpHeight: 3
   jumpTime: 0.8
+  minFlightTime: 0.25
   jumpCurve:
     serializedVersion: 2
     m_Curve:
