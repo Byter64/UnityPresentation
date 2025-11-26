@@ -14,14 +14,14 @@ namespace Presentation
 		private int activeSlideIndex;
 		private GameObject activeSlide;
 
-		[SerializeField, Tooltip("Editor Only Variable"), Min(0)] private int viewSlideWithIndex;
+		[SerializeField, Tooltip("Editor Only Variable"), Min(0)] private int previewSlideIndex;
 		[SerializeField, Tooltip("Editor Only Variable")] bool startFromBeginning;
 
 		private void OnValidate()
 		{
-			if (viewSlideWithIndex != activeSlideIndex && viewSlideWithIndex < transform.childCount)
+			if (previewSlideIndex != activeSlideIndex && previewSlideIndex < transform.childCount)
 			{
-				activeSlideIndex = viewSlideWithIndex;
+				activeSlideIndex = previewSlideIndex;
 				UpdatePresentationEditor();
 			}
 		}
@@ -62,7 +62,7 @@ namespace Presentation
 			if (startFromBeginning)
 				activeSlideIndex = 0;
 			else
-				activeSlideIndex = Mathf.Min(viewSlideWithIndex, transform.childCount - 1);
+				activeSlideIndex = Mathf.Min(previewSlideIndex, transform.childCount - 1);
 #else
 		activeSlideIndex = 0;
 #endif
@@ -135,7 +135,7 @@ namespace Presentation
 
 		public void UpdatePresentationEditor(int slideIndex)
 		{
-			viewSlideWithIndex = slideIndex;
+			previewSlideIndex = slideIndex;
 			activeSlideIndex = slideIndex;
 			UpdatePresentationEditor();
 		}
