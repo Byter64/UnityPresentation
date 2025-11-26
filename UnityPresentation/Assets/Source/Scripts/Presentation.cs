@@ -1,8 +1,10 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Presentation
 {
+	[InitializeOnLoad]
 	public class Presentation : MonoBehaviour
 	{
 		public static Presentation Instance { get; private set; }
@@ -17,13 +19,27 @@ namespace Presentation
 
 		private void OnValidate()
 		{
-			Instance = this;
-
 			if (viewSlideWithIndex != activeSlideIndex && viewSlideWithIndex < transform.childCount)
 			{
 				activeSlideIndex = viewSlideWithIndex;
 				UpdatePresentationEditor();
 			}
+		}
+
+		public static void InitialiseSingleton()
+		{
+			if (Instance != null) return;
+			Presentation[] presentations = FindObjectsByType<Presentation>(FindObjectsSortMode.None);
+			if(presentations.Length == 0)
+			{
+				throw new System.Exception("There is no presentation in this scene");
+			}
+			if(presentations.Length > 1)
+			{
+				throw new System.Exception("There is more than one presentation in this scene");
+			}
+			
+			Instance = presentations[0];
 		}
 
 		private void Awake()
@@ -111,10 +127,17 @@ namespace Presentation
 			activeSlide.SetActive(true);
 		}
 
-		private void UpdatePresentationEditor()
+		public void UpdatePresentationEditor()
 		{
 			transform.position = -transform.GetChild(activeSlideIndex).localPosition;
 			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
+		}
+
+		public void UpdatePresentationEditor(int slideIndex)
+		{
+			viewSlideWithIndex = slideIndex;
+			activeSlideIndex = slideIndex;
+			UpdatePresentationEditor();
 		}
 	}
 }
