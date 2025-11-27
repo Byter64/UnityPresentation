@@ -377,7 +377,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113339480}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -406,7 +406,7 @@ Camera:
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
-  m_Depth: 5
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -569,7 +569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -612,7 +612,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -638,7 +638,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000000019242823, y: -0.000000026218347, z: -5.04515e-17, w: 1}
-  m_LocalPosition: {x: 0.8, y: 1.9300001, z: -8.389999}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2100,11 +2100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: previewSlideIndex
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: startFromBeginning
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: viewSlideWithIndex
@@ -2120,7 +2120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5102804391195937202, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -60
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 5102804391195937202, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: m_LocalPosition.y

@@ -152,12 +152,23 @@ namespace Presentation
 		public void UpdatePresentationEditor()
 		{
 			transform.position = -transform.GetChild(activeSlideIndex).localPosition;
+			Camera[] cameras;
+			if (activeSlide != null)
+			{
+				cameras = activeSlide.GetComponentsInChildren<Camera>();
+				foreach (Camera camera in cameras)
+					camera.enabled = false;
+			}
+
 			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
 			MainCam.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
 			if(activeSlide.GetComponentInChildren<Camera>() != null)
 				MainCam.gameObject.SetActive(false);
 			else
 				MainCam.gameObject.SetActive(true);
+			cameras = activeSlide.GetComponentsInChildren<Camera>();
+			foreach (Camera camera in cameras)
+				camera.enabled = true;
 		}
 
 		public void UpdatePresentationEditor(int slideIndex)
