@@ -7,7 +7,20 @@ namespace Presentation
 	[InitializeOnLoad]
 	public class Presentation : MonoBehaviour
 	{
-		public static Presentation Instance { get; private set; }
+		public static Presentation Instance 
+		{ get
+			{
+				if (instance == null)
+					InitialiseSingleton();
+				return instance;
+			}
+			private set
+			{
+				instance = value;
+			}
+		}
+
+		private static Presentation instance;
 
 		public Transform defaultCameraTransform;
 
@@ -28,7 +41,7 @@ namespace Presentation
 
 		public static void InitialiseSingleton()
 		{
-			if (Instance != null) return;
+			if (instance != null) return;
 			Presentation[] presentations = FindObjectsByType<Presentation>(FindObjectsSortMode.None);
 			if(presentations.Length == 0)
 			{
@@ -39,7 +52,7 @@ namespace Presentation
 				throw new System.Exception("There is more than one presentation in this scene");
 			}
 			
-			Instance = presentations[0];
+			instance = presentations[0];
 		}
 
 		private void Awake()
