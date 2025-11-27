@@ -849,7 +849,11 @@ PrefabInstance:
 
         * <b>Survivor
         Component:</b> Add this to an object to have it live throughout a series
-        of slides (see the "Music" game object as example)'
+        of slides (see the "Music" game object as example)
+
+
+        * I added 2000
+        fonts to this project so that you already have a selection of fonts'
       objectReference: {fileID: 0}
     - target: {fileID: 8953950353496104637, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       propertyPath: m_fontStyle
