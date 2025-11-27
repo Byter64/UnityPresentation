@@ -26,6 +26,15 @@ namespace Presentation
 
 		private int activeSlideIndex;
 		private GameObject activeSlide;
+		private Camera MainCam 
+		{
+			get
+			{
+				if(mainCam == null && Camera.main != null)
+					mainCam = Camera.main;
+				return mainCam;
+			}
+		}
 		private Camera mainCam;
 
 		[SerializeField, Tooltip("Editor Only Variable"), Min(0)] private int previewSlideIndex;
@@ -68,11 +77,9 @@ namespace Presentation
 
 		private void Start()
 		{
-			mainCam = Camera.main;
-
-			mainCam.transform.position = defaultCameraTransform.position;
-			mainCam.transform.rotation = defaultCameraTransform.rotation;
-			mainCam.transform.localScale = defaultCameraTransform.localScale;
+			MainCam.transform.position = defaultCameraTransform.position;
+			MainCam.transform.rotation = defaultCameraTransform.rotation;
+			MainCam.transform.localScale = defaultCameraTransform.localScale;
 
 #if UNITY_EDITOR
 			if (startFromBeginning)
@@ -146,11 +153,11 @@ namespace Presentation
 		{
 			transform.position = -transform.GetChild(activeSlideIndex).localPosition;
 			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
-			Camera.main.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
+			MainCam.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
 			if(activeSlide.GetComponentInChildren<Camera>() != null)
-				mainCam.gameObject.SetActive(false);
+				MainCam.gameObject.SetActive(false);
 			else
-				mainCam.gameObject.SetActive(true);
+				MainCam.gameObject.SetActive(true);
 		}
 
 		public void UpdatePresentationEditor(int slideIndex)
