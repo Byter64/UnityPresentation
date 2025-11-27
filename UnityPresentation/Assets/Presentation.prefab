@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Presentation
   defaultCameraTransform: {fileID: 0}
-  viewSlideWithIndex: 8
+  previewSlideIndex: 0
   startFromBeginning: 0
 --- !u!114 &7116763159477928136
 MonoBehaviour:
@@ -259,30 +259,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       insertIndex: 0
       addedObject: {fileID: 8332054875430811988}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5066152677982945894, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1039298477176224935}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
 --- !u!4 &4314527943246636718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
   m_PrefabInstance: {fileID: 112446410972913592}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5170671609180036574 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5066152677982945894, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
-  m_PrefabInstance: {fileID: 112446410972913592}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1039298477176224935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5170671609180036574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 831fb05d76e84c742b026402a290f028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Slide

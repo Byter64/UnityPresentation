@@ -138,12 +138,14 @@ namespace Presentation
 			transform.position = -transform.GetChild(activeSlideIndex).localPosition;
 			activeSlide = newActiveSlide;
 			activeSlide.SetActive(true);
+			Camera.main.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
 		}
 
 		public void UpdatePresentationEditor()
 		{
 			transform.position = -transform.GetChild(activeSlideIndex).localPosition;
 			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
+			Camera.main.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
 		}
 
 		public void UpdatePresentationEditor(int slideIndex)
