@@ -23,19 +23,10 @@ namespace Presentation
 		private static Presentation instance;
 
 		public Transform defaultCameraTransform;
+		[SerializeField] private Camera mainCam;
 
 		 private int activeSlideIndex;
 		[SerializeField, ReadOnly] private GameObject activeSlide;
-		private Camera MainCam 
-		{
-			get
-			{
-				if(mainCam == null && Camera.main != null)
-					mainCam = Camera.main;
-				return mainCam;
-			}
-		}
-		private Camera mainCam;
 
 		[SerializeField, Tooltip("Editor Only Variable")] bool startFromBeginning;
 
@@ -57,6 +48,8 @@ namespace Presentation
 
 		private void Awake()
 		{
+			mainCam.enabled = true;
+
 			Instance = this;
 
 			foreach (Transform child in transform)
@@ -67,9 +60,9 @@ namespace Presentation
 
 		private void Start()
 		{
-			MainCam.transform.position = defaultCameraTransform.position;
-			MainCam.transform.rotation = defaultCameraTransform.rotation;
-			MainCam.transform.localScale = defaultCameraTransform.localScale;
+			mainCam.transform.position = defaultCameraTransform.position;
+			mainCam.transform.rotation = defaultCameraTransform.rotation;
+			mainCam.transform.localScale = defaultCameraTransform.localScale;
 
 #if UNITY_EDITOR
 			if (startFromBeginning)
@@ -151,11 +144,11 @@ namespace Presentation
 			}
 
 			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
-			MainCam.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
+			mainCam.orthographic = !activeSlide.GetComponent<Slide>().isCameraPerspective;
 			if(activeSlide.GetComponentInChildren<Camera>() != null)
-				MainCam.gameObject.SetActive(false);
+				mainCam.gameObject.SetActive(false);
 			else
-				MainCam.gameObject.SetActive(true);
+				mainCam.gameObject.SetActive(true);
 			cameras = activeSlide.GetComponentsInChildren<Camera>();
 			foreach (Camera camera in cameras)
 				camera.enabled = true;
