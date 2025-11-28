@@ -23,6 +23,7 @@ namespace Presentation
 		private static Presentation instance;
 
 		public Transform defaultCameraTransform;
+		public Camera MainCam { get {  return mainCam; } }
 		[SerializeField] private Camera mainCam;
 
 		 private int activeSlideIndex;

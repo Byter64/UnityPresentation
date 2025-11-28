@@ -8,7 +8,7 @@ namespace Presentation
 		public bool isCameraPerspective;
 		private void OnDrawGizmos()
 		{
-			Camera cam = Camera.main;
+			Camera cam = Presentation.Instance.MainCam;
 			Vector3 position = transform.position + Presentation.Instance.defaultCameraTransform.position;
 
 			if (isCameraPerspective)
