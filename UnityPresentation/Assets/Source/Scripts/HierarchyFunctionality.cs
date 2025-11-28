@@ -45,7 +45,9 @@ namespace Presentation
 			double time = EditorApplication.timeSinceStartup;
 			if(time - lastClick.time < Click.doubleClickThreshold && instanceID == lastClick.instanceID)
 			{
-				Presentation.Instance.UpdatePresentationEditor(clicked.transform.GetSiblingIndex());
+				int slideIndex = clicked.transform.GetSiblingIndex();
+				Presentation.Instance.UpdatePresentationEditor(slideIndex);
+				PlayerPrefs.SetInt("slideIndex", slideIndex);
 			}
 
 			lastClick = new Click(time, instanceID);

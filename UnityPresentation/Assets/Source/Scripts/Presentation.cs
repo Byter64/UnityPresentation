@@ -24,8 +24,8 @@ namespace Presentation
 
 		public Transform defaultCameraTransform;
 
-		[SerializeField, ReadOnly] private int activeSlideIndex;
-		private GameObject activeSlide;
+		 private int activeSlideIndex;
+		[SerializeField, ReadOnly] private GameObject activeSlide;
 		private Camera MainCam 
 		{
 			get
@@ -74,10 +74,12 @@ namespace Presentation
 #if UNITY_EDITOR
 			if (startFromBeginning)
 				activeSlideIndex = 0;
+			else
+				activeSlideIndex = PlayerPrefs.GetInt("slideIndex");
 #else
 		activeSlideIndex = 0;
 #endif
-			activeSlide = transform.GetChild(activeSlideIndex).gameObject;
+				activeSlide = transform.GetChild(activeSlideIndex).gameObject;
 			UpdatePresentation();
 		}
 
