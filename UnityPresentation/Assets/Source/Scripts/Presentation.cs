@@ -24,7 +24,7 @@ namespace Presentation
 
 		public Transform defaultCameraTransform;
 
-		private int activeSlideIndex;
+		[SerializeField, ReadOnly] private int activeSlideIndex;
 		private GameObject activeSlide;
 		private Camera MainCam 
 		{
@@ -37,17 +37,7 @@ namespace Presentation
 		}
 		private Camera mainCam;
 
-		[SerializeField, Tooltip("Editor Only Variable"), Min(0)] private int previewSlideIndex;
 		[SerializeField, Tooltip("Editor Only Variable")] bool startFromBeginning;
-
-		private void OnValidate()
-		{
-			if (previewSlideIndex != activeSlideIndex && previewSlideIndex < transform.childCount)
-			{
-				activeSlideIndex = previewSlideIndex;
-				UpdatePresentationEditor();
-			}
-		}
 
 		public static void InitialiseSingleton()
 		{
@@ -84,8 +74,6 @@ namespace Presentation
 #if UNITY_EDITOR
 			if (startFromBeginning)
 				activeSlideIndex = 0;
-			else
-				activeSlideIndex = Mathf.Min(previewSlideIndex, transform.childCount - 1);
 #else
 		activeSlideIndex = 0;
 #endif
@@ -173,7 +161,6 @@ namespace Presentation
 
 		public void UpdatePresentationEditor(int slideIndex)
 		{
-			previewSlideIndex = slideIndex;
 			activeSlideIndex = slideIndex;
 			UpdatePresentationEditor();
 		}

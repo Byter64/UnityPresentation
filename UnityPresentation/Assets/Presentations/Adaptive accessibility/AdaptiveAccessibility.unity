@@ -2104,7 +2104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: startFromBeginning
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1890664920193273577, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: viewSlideWithIndex
