@@ -55,6 +55,8 @@ namespace Presentation
 
 		static void OnPublish(ref ObjectChangeEventStream stream)
 		{
+			if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+
 			for (int i = 0; i < stream.length; i++)
 			{
 				ObjectChangeKind type = stream.GetEventType(i);
