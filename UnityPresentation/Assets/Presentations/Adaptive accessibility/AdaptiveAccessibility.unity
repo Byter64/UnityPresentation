@@ -765,7 +765,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1301497539661700917, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -8.46
+      value: -6.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301497539661700917, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 4210642606037186838, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -817,11 +821,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494205500354539551, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       propertyPath: m_fontSize
-      value: 1.2
+      value: 1.64
       objectReference: {fileID: 0}
     - target: {fileID: 8494205500354539551, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       propertyPath: m_fontSizeBase
-      value: 1.2
+      value: 1.64
       objectReference: {fileID: 0}
     - target: {fileID: 8953950353496104637, guid: a5104602a7b6c2549b41d7dfca653f24, type: 3}
       propertyPath: m_text
@@ -3617,7 +3621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5102804391195937202, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -120
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5102804391195937202, guid: 373fa031991afe04ba7a416dd2d6b9a2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3719,9 +3723,73 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1170436788}
     m_Modifications:
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: fc95afc1-6b77-4895-b256-9c45baf70946
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 1e5d21a9-6995-4cdc-b01b-221456f5fea0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 2a6c2263-da5c-4f67-9338-965d4187aaa2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 6e538ec0-7861-46e6-b458-494ef00dce68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: 'Player2/Collect[/Mouse/leftButton,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: 'Player2/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446043045401136222, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: 'Player2/Jump[/Keyboard/space,/SwitchProControllerHID/buttonEast,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]'
+      objectReference: {fileID: 0}
     - target: {fileID: 2590073596804320697, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
       propertyPath: m_Name
       value: Players
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: faf1b90c-457f-40cd-a2e6-c474946e17a5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 1e5d21a9-6995-4cdc-b01b-221456f5fea0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 2a6c2263-da5c-4f67-9338-965d4187aaa2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 6e538ec0-7861-46e6-b458-494ef00dce68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: 'Player2/Collect[/Mouse/leftButton,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: 'Player2/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503270450091177269, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: 'Player2/Jump[/Keyboard/space,/SwitchProControllerHID/buttonEast,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonSouth]'
       objectReference: {fileID: 0}
     - target: {fileID: 8709978114881795385, guid: cc1158eea1ac7024fb99bffd253f51e5, type: 3}
       propertyPath: m_LocalPosition.x
