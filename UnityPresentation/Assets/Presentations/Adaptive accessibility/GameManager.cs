@@ -1,16 +1,27 @@
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private GameObject playersPrefab;
 	[SerializeField] private GameObject players;
+	[SerializeField] private CinemachineCamera cinemachineCamera;
 	[SerializeField] private TextMeshProUGUI timerText;
 	[SerializeField] private TextMeshProUGUI scoreText;
 	[SerializeField] private float time;
 	private float timer;
 
-    public int Score_P1 {  get; private set; }
+	[SerializeField, Tooltip("Below which percentage is accessibility triggered for P1")] private float accessibilityTrigger_P1;
+	[SerializeField, Tooltip("Below which percentage is accessibility triggered for P2")] private float accessibilityTrigger_P2;
+
+	[Header("Accessibility P1")]
+	[SerializeField] private float cheeseScale;
+
+	[Header("Accessibility P2")]
+	[SerializeField] private float ietalcsoa;
+
+	public int Score_P1 {  get; private set; }
     public int Score_P2 {  get; private set; }
 
 	public int Score_Total { get { return Score_P1 + Score_P2; } }
@@ -25,6 +36,13 @@ public class GameManager : MonoBehaviour
 	private void IncrementPlayer2Score()
 	{
 		Score_P2 += 1;
+	}
+
+	private void Start()
+	{
+		timer = time;
+		ActivateAccessibilityForP1();
+		ActivateAccessibilityForP2();
 	}
 
 	private void Update()
@@ -45,14 +63,38 @@ public class GameManager : MonoBehaviour
 	public void ResetGame(int winnerIndex)
 	{
 		Destroy(players);
-		players = Instantiate(playersPrefab, transform.parent);
-
 		switch (winnerIndex)
 		{
 			case 0: Score_P1++; break;
 			case 1: Score_P2++; break;
 		}
 
+		players = Instantiate(playersPrefab, transform.parent);
+		cinemachineCamera.Target.TrackingTarget = players.transform.GetChild(0);
+		cinemachineCamera.Target.LookAtTarget = players.transform.GetChild(1);
+
 		scoreText.text = Score_P1.ToString() + " : " + Score_P2.ToString();
+
+		if (winRate_P1 <= accessibilityTrigger_P1)
+			ActivateAccessibilityForP1();
+		if (winRate_P2 <= accessibilityTrigger_P2)
+			ActivateAccessibilityForP2();
+	}
+
+	private void ActivateAccessibilityForP1()
+	{
+		GameObject cheese = players.transform.GetChild(1).gameObject;
+		GameObject arrow = players.transform.GetChild(2).gameObject;
+		GameObject audioHint = players.transform.GetChild(3).gameObject;
+
+		cheese.transform.localScale *= cheeseScale;
+		cheese.GetComponent<ParticleSystem>().Play();
+		arrow.SetActive(true);
+		audioHint.SetActive(true);
+	}
+
+	private void ActivateAccessibilityForP2()
+	{
+
 	}
 }
